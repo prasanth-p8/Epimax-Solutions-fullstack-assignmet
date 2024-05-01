@@ -1,0 +1,41 @@
+.task-item{
+    border: rgb(164, 164, 255) 1px solid;
+    padding: 5px 20px 30px 20px;
+    border-radius: 20px;
+    min-width: 350px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
+
+.top-task-item-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-item-heading{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.task-item-status-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-option{
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.delete-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    align-self: flex-start;
+    margin-top: 10px;
+}

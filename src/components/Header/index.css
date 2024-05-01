@@ -1,0 +1,52 @@
+
+.heading-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(55, 124, 253);
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.website-logo-container{
+    display: flex;
+    align-items: center;
+}
+.webiste-image{
+    width: 40px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.website-heading{
+color: white;
+font-size: 25px;
+}
+
+.manager{
+    color: rgb(93, 204, 255);
+}
+
+.notification-panel{
+    display: flex;
+    min-width: 170px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-container{
+    display: flex;
+    align-items: center;
+    background-color:black;
+    padding: 6px 10px 6px 10px ;
+    border-radius: 10px;
+}
+
+.logout-button{
+    background-color: transparent;
+    border: none;
+    color: rgb(93, 204, 255);
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
