@@ -17,7 +17,9 @@ class Home extends Component{
         taskDescription:'',
         dueDate :"mm/dd/yyyy",
         taskList: [],
-        errorMsg:false
+        errorMsgTitle:false,
+        errorMsgDescription:false,
+        errorMsgDate:false
       }
 
       addNewTask = event => {
@@ -32,23 +34,41 @@ class Home extends Component{
                 status:taskStatusContants.created
             }
             
-            this.setState(prevState => ({errorMsg:false, dueDate:"mm/dd/yyyy",taskList: [...prevState.taskList, newTask],taskName:"",taskDescription:""}))    
-        }else{
-            this.setState({errorMsg:true})
+            this.setState(prevState => ({errorMsgTitle:false,
+                errorMsgDescription:false,
+                errorMsgDate:false, dueDate:"mm/dd/yyyy",taskList: [...prevState.taskList, newTask],taskName:"",taskDescription:""}))    
+        }
+        else{
+            this.setState({errorMsgTitle:true,
+                errorMsgDescription:true,
+                errorMsgDate:true
+                })
         }
         
     }
 
     changeTaskName = event => {
-        this.setState({taskName:event.target.value})
+        if(event.target.value === ""){
+            this.setState({errorMsgTitle:true,taskName:''})
+        }else{
+            this.setState({errorMsgTitle:false, taskName:event.target.value})
+        }
     }
 
     
     changeTaskDescription = event => {
-        this.setState({taskDescription: event.target.value})
+        if(event.target.value === ""){
+            this.setState({errorMsgDescription:true,taskDescription:""})
+        }else{
+            this.setState({errorMsgDescription:false, taskDescription:event.target.value})
+        }
     }
     changeDueDate = event => {
-        this.setState({dueDate: event.target.value})
+        if(event.target.value === ""){
+            this.setState({errorMsgDate:true,dueDate:"mm/dd/yyyy"})
+        }else{
+            this.setState({errorMsgDate:false, dueDate:event.target.value})
+        }
     }
 
     getCreatedTaskCount = () => {
@@ -119,7 +139,7 @@ class Home extends Component{
 
 
     render(){
-    const {taskDescription,taskName,dueDate,errorMsg} = this.state
+    const {taskDescription,taskName,dueDate,errorMsgTitle,errorMsgDescription,errorMsgDate} = this.state
 
     const createdTask = this.getCreatedTaskCount()
     const startedTask = this.getStartedTaskCount()
@@ -147,17 +167,17 @@ class Home extends Component{
                     <div className="form-group">
                         <label htmlFor="taskName">Task Name: </label>
                         <input type="text" value={taskName} onChange={this.changeTaskName} className="form-control" id="taskName" placeholder="Task Name"/>
-                    {errorMsg && <p className='error-msg'>*Required</p>}
+                    {errorMsgTitle && <p className='error-msg'>*Required</p>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="taskDescription">Task Description:</label>
                         <textarea id="taskDescription" value={taskDescription} onChange={this.changeTaskDescription}  rows="4" cols="50" type="text" className="form-control"  placeholder="Task Description" ></textarea>
-                        {errorMsg && <p className='error-msg'>*Required</p>}
+                        {errorMsgDescription && <p className='error-msg'>*Required</p>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="dueDate">Due Date:</label>
                         <input type="date" className="form-control" value={dueDate} onChange={this.changeDueDate} id="dueDate"  />
-                        {errorMsg && <p className='error-msg'>*Required</p>}
+                        {errorMsgDate && <p className='error-msg'>*Required</p>}
                     </div>
                     <div className="add-button-container">
                     <div className="add-button">
